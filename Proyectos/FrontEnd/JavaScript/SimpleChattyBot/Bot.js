@@ -1,9 +1,13 @@
-const input = require('sync-input');
-
+const input = require('readline');
+var rl = input.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 console.log("Hello! My name is Aid.");
 console.log("I was created in 2022.");
-console.log("Please, remind me your name.");
-// use input() + to get the user's output
-let your_name = input();
-
-console.log("What a great name you have, "+your_name+"!");
+rl.setPrompt('Please, remind me your name : ');
+rl.prompt();
+rl.on('line',(your_name) => {
+    console.log("What a great name you have. " + your_name + "");
+    rl.close();
+});
